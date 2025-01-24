@@ -17,19 +17,22 @@ class Livro:
                 'Páginas de Livro: {}'.format(self.título, self.autor, self.número_páginas_livro))
     
     def emprestar(self):
-        emprestar = ''
+        if self.disponível:
+            emprestar = ''
         while emprestar not in ['sim', 'não']:
-            print('Olá, seja-bem vindo ao nossa Biblioteca do Alyson')
             empréstimo = input('Você me emprestaria esse livro: {} (sim/não)? '.format(self.título))
             if empréstimo == 'sim':
-                self.disponível = True
+                self.disponível = False
                 print('Sim? Ótimo, muito, obrigado')
             else:
                 print('Não? Sério, que coisa hein!! TCHAU!!!')
+        else:
+            print('O livro: {} não está disponível nesse momento')
 
 
     def devolver(self):
-        devoluçao = ''
+        if not self.disponível:
+            devoluçao = ''
         while devoluçao not in ['sim', 'não']:
             devoluçao = input('Deseja fazer uma devolução desse livro: {} (sim/não)? '.format(self.título))
             if devoluçao == 'sim':
@@ -37,6 +40,8 @@ class Livro:
                 print('Sim? Obrigado, volte sempre!')
             else:
                 print('Não? Então tá bom, volte sempre!')
+        else:
+            print('O livro: {} não está disponível nesse momento')
 
     def verificação(self):
         if self.disponível:
