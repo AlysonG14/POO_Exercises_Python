@@ -13,11 +13,18 @@ class Produto:
                 'Preço R$: {:.2f}\n'
                 'Quantidade: {}'.format(self.nome, self.preco, self.quantidade_estoque))
 
-    def calcular_valor(self, Valor_Total):
-        Valor_Total = self.preco * self.quantidade_estoque
-        self.quantidade_estoque = True
-        if self.quantidade_estoque >= 0:
-            print('O Produto está disponível')
+    def calcular_valor(self):
+        Valor_Total = self.quantidade_estoque * self.preco
+
+        if self.quantidade_estoque > 0:
+            print('Produto Disponível, o valor total é: R${:.2f}'.format(Valor_Total))
         else:
-            print('O produto não está disponível')
+            print('Produto Indisponível')
+
+resultado = Produto('Arroz Integral', 400, 300)
+print(resultado)
+
+resultado.calcular_valor()
+
+
 
