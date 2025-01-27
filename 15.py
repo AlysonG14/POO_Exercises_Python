@@ -13,17 +13,14 @@ class JogoCartas:
         self.maos = {}
 
     def embaralhar_cartas(self):
-        """Embaralha o baralho de cartas."""
         random.shuffle(self.baralho)
         print("Cartas embaralhadas!")
 
     def adicionar_jogadores(self, nomes):
-        """Adiciona jogadores ao jogo."""
         self.jogadores = nomes
         print(f"Jogadores adicionados: {', '.join(nomes)}")
 
-    def distribuir_cartas(self, num_cartas=5):
-        """Distribui cartas aos jogadores."""
+    def distribuir_cartas(self, num_cartas=7):
         if not self.jogadores:
             print("Nenhum jogador cadastrado!")
             return
@@ -39,12 +36,10 @@ class JogoCartas:
         print("Cartas distribuídas aos jogadores!")
 
     def exibir_maos(self):
-        """Exibe as cartas de cada jogador."""
         for jogador, cartas in self.maos.items():
             print(f"{jogador}: {', '.join(cartas)}")
 
     def jogar_carta(self, jogador, carta):
-        """Permite que um jogador jogue uma carta."""
         if jogador not in self.jogadores:
             print(f"Jogador {jogador} não encontrado!")
             return
@@ -57,7 +52,6 @@ class JogoCartas:
         print(f"Jogador {jogador} jogou a carta '{carta}'.")
 
     def verificar_vencedor(self):
-        """Verifica se há um vencedor (jogador sem cartas)."""
         for jogador, cartas in self.maos.items():
             if not cartas:  
                 print(f"Jogador {jogador} venceu!")
