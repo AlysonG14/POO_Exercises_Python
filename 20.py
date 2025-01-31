@@ -15,7 +15,7 @@ class Peao(Peca):
         super().__init__(xadrez, cor)
 
     def movimentos(self, posicao):
-        pass  # Movimentação de peão
+        pass  
 
 class Torre(Peca):
     def __init__(self, xadrez, cor):
@@ -23,19 +23,14 @@ class Torre(Peca):
 
     def movimentos(self, posicao):
         movimentos_possiveis = []
-        # Movimentos na vertical e horizontal
         for i in range(1, 8):
-            # Movimento para baixo
-            if posicao[0] + i < 8:  # Não ultrapassar o limite do tabuleiro
+            if posicao[0] + i < 8:  
                 movimentos_possiveis.append((posicao[0] + i, posicao[1]))
-            # Movimento para cima
-            if posicao[0] - i >= 0:  # Não ultrapassar o limite do tabuleiro
+            if posicao[0] - i >= 0:
                 movimentos_possiveis.append((posicao[0] - i, posicao[1]))
-            # Movimento para a direita
-            if posicao[1] + i < 8:  # Não ultrapassar o limite do tabuleiro
+            if posicao[1] + i < 8: 
                 movimentos_possiveis.append((posicao[0], posicao[1] + i))
-            # Movimento para a esquerda
-            if posicao[1] - i >= 0:  # Não ultrapassar o limite do tabuleiro
+            if posicao[1] - i >= 0:  
                 movimentos_possiveis.append((posicao[0], posicao[1] - i))
         return movimentos_possiveis
 
@@ -93,7 +88,6 @@ class Xadrez:
         peca = self.tabuleiro[origem[0]][origem[1]]
         movimentos_validos = peca.movimentos(origem)
         if destino in movimentos_validos:
-            # Verificar se o destino não está ocupado por uma peça da mesma cor
             destino_peca = self.tabuleiro[destino[0]][destino[1]]
             if destino_peca is None or destino_peca.cor != peca.cor:
                 self.tabuleiro[destino[0]][destino[1]] = peca
@@ -116,8 +110,8 @@ class Xadrez:
             rei.roque(destino)
 
 
-# Testando a funcionalidade
+
 xadrez = Xadrez()
 xadrez.imprimir_tabuleiro()
-xadrez.mover_peca((1, 0), (2, 0))  # Move um peão
-xadrez.mover_peca((0, 0), (3, 0))  # Tenta mover uma torre (exemplo)
+xadrez.mover_peca((1, 0), (2, 0))  
+xadrez.mover_peca((0, 0), (3, 0))  
